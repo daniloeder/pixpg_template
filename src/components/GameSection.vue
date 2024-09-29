@@ -98,7 +98,6 @@
   }
   
   .game-box {
-    width: 100%;
     margin-left: calc(min(100vw, 490px) * 0.032);
     margin-bottom: 2rem; /* Adds space between sections */
   }

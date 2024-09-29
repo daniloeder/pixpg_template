@@ -1,53 +1,59 @@
 <template>
-  <div class="main-body">
-    <!-- Top Banner -->
-    <div class="banner">
-      <img src="./../assets/images/WEB BANNER - PIX PG3.webp" alt="Top Banner" class="banner-img">
+  <div class="container">
+    <div class="main-body">
+      <!-- Top Banner -->
+      <div class="banner">
+        <img src="./../assets/images/WEB BANNER - PIX PG3.webp" alt="Top Banner" class="banner-img" />
+      </div>
+
+      <!-- Notice Section with Sound Icon -->
+      <div class="notice-section">
+        <img src="./../assets/images/furlaBlue_voice_icon.webp" alt="Sound Icon" class="sound-icon" />
+        <div class="notice-box">
+          <!-- Notice content can be added here -->
+        </div>
+        <div class="notice-text">
+          <span>
+            Bem-vindo ao pixpg.app
+            ~ 1.Três bônus grátis no seu primeiro depósito até 20 por cento
+            ~ 2.Convide amigos e ganhe até 10 cada convidado!
+          </span>
+        </div>
+      </div>
+
+      <!-- Jackpot Section -->
+      <div class="jackpot-section">
+        <img src="./../assets/images/JACKPOT-PIXPG-ezgif.com-video-to-webp-converter.webp" alt="Jackpot" class="jackpot-img" />
+      </div>
+
+      <!-- Menu Section -->
+      <div class="menu-section">
+        <div class="menu-item">
+          <div class="menu-item-text">Popular</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">PG Slots</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">PP Slots</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">Evolution</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-text">Convidar</div>
+        </div>
+      </div>
+
+      <!-- Game Section -->
+      <GameSection />
     </div>
 
-    <!-- Notice Section with Sound Icon -->
-    <div class="notice-section">
-      <img src="./../assets/images/furlaBlue_voice_icon.webp" alt="Sound Icon" class="sound-icon">
-      <div class="notice-box">
-        <!-- Notice content can be added here -->
-      </div>
-      <div class="notice-text">
-        <span>
-          Bem-vindo ao pixpg.app
-          ~ 1.Três bônus grátis no seu primeiro depósito até 20 por cento
-          ~ 2.Convide amigos e ganhe até 10 cada convidado!
-        </span>
-      </div>
-    </div>
-
-    <!-- Jackpot Section -->
-    <div class="jackpot-section">
-      <img src="./../assets/images/JACKPOT-PIXPG-ezgif.com-video-to-webp-converter.webp" alt="Jackpot" class="jackpot-img">
-    </div>
-
-    <!-- Menu Section -->
-    <div class="menu-section">
-      <div class="menu-item">
-        <div class="menu-item-text">Popular</div>
-      </div>
-      <div class="menu-item">
-        <div class="menu-item-text">PG Slots</div>
-      </div>
-      <div class="menu-item">
-        <div class="menu-item-text">PP Slots</div>
-      </div>
-      <div class="menu-item">
-        <div class="menu-item-text">Evolution</div>
-      </div>
-      <div class="menu-item">
-        <div class="menu-item-text">Convidar</div>
-      </div>
-    </div>
-
-    <!-- Game Section -->
-    <GameSection />
+    <footer class="footer">
+      <!-- Footer content here -->
+      Footer Content
+    </footer>
   </div>
-
 </template>
 
 <script>
@@ -56,31 +62,57 @@ import GameSection from './GameSection.vue';
 export default {
   name: 'MainBody',
   components: {
-    GameSection
-  }
+    GameSection,
+  },
 };
 </script>
 
 <style scoped>
-/* Main body background */
+/* Global styles */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Container to hold header, main body, and footer */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full height of the viewport */
+}
+
+/* Main body styles */
 .main-body {
   background-color: #8eaae1;
   background-image: url('./../assets/images/bg_pattern_tile.png');
-  background-size: 10%; /* Adjust to fit 4 columns inside the container */
+  background-size: 10%;
   background-repeat: repeat;
   background-position: center bottom;
   background-attachment: fixed;
-  min-height: 100vh;
-  grid-template-rows: repeat(7, 1fr); /* 7 rows */
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  flex: 1; /* Take up remaining space */
   padding: 0;
-  margin: 0;
-  box-sizing: border-box; /* Make sure padding and borders are included in element size */
+  overflow-y: auto; /* Enable vertical scrolling only */
+}
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+.main-body::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
+}
+
+/* Hide scrollbar for Firefox */
+.main-body {
+  scrollbar-width: none; /* Hide scrollbar */
+}
+
+/* Footer styles */
+.footer {
+  background-color: #014789; /* Adjust as needed */
+  color: white;
+  padding: 1rem; /* Adjust as needed */
 }
 
 /* Banner Styles */
 .banner {
-  grid-column: span 4;
   width: 98%;
   text-align: center;
   border-radius: 1rem;
@@ -96,7 +128,6 @@ export default {
 
 /* Notice Section */
 .notice-section {
-  grid-column: span 4;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -106,7 +137,7 @@ export default {
   padding: 0 5%;
   height: calc(min(100vw, 490px) * 0.08);
   margin-top: 0.7rem;
-  box-sizing: border-box; /* Include padding in total height */
+  box-sizing: border-box;
 }
 
 .sound-icon {
@@ -117,59 +148,58 @@ export default {
 .notice-box {
   flex: 1;
   text-align: center;
-  color: rgba(255, 255, 255, .88);
+  color: rgba(255, 255, 255, 0.88);
   font-size: calc(min(100vw, 490px) / 750 * 22);
   font-weight: 700;
-  margin-right: calc(min(100vw, 490px)*.016);
+  margin-right: calc(min(100vw, 490px) * 0.016);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Notice text that scrolls */
 .notice-text {
   color: white;
-  white-space: nowrap; /* Prevent text from wrapping */
+  white-space: nowrap; 
   text-align: center;
   font-weight: bold;
   font-size: calc(min(100vw, 490px) * 0.032);
-  overflow: hidden; /* Hide text that goes outside the container */
-  width: 100%; /* Full width of the notice section */
+  overflow: hidden; 
+  width: 100%; 
   position: relative;
 }
 
 .notice-text span {
   display: inline-block;
-  padding-left: 100%; /* Start the text outside of the visible area */
-  animation: scroll-left 40s linear infinite; /* 15 seconds for full loop */
+  padding-left: 100%; 
+  animation: scroll-left 40s linear infinite; 
 }
 
 @keyframes scroll-left {
   0% {
-    transform: translateX(100%); /* Start from the right (outside the container) */
+    transform: translateX(100%); 
   }
   100% {
-    transform: translateX(-100%); /* Move to the left, outside the container */
+    transform: translateX(-100%); 
   }
 }
 
 /* Jackpot Section */
 .jackpot-section {
-  grid-column: span 4;
   text-align: center;
-  margin: 0; /* Remove all margins */
-  padding: 0; /* Ensure no padding between sections */
+  margin: 0; 
+  padding: 0; 
 }
 
 .jackpot-img {
   width: 100%;
   max-width: 100vw;
   display: block;
-  margin: 0; /* Remove any margin from images */
+  margin: 0; 
 }
 
 /* Menu Section */
 .menu-section {
-  height: calc(min(100vw, 490px)* .16);
-  width: calc(100% -(min(100vw, 490px)* .064));
+  height: calc(min(100vw, 490px) * 0.16);
+  width: 100%;
   background-color: #014789;
   display: flex;
   justify-content: space-evenly;
@@ -177,7 +207,7 @@ export default {
 }
 
 .menu-item {
-  width: calc(min(100vw, 490px)*.16);
+  width: calc(min(100vw, 490px) * 0.16);
   align-items: center;
   justify-content: center;
   background-color: #0d273f;
@@ -186,7 +216,7 @@ export default {
 }
 
 .menu-item-text {
-  color: rgba(255, 255, 255, .6);
+  color: rgba(255, 255, 255, 0.6);
   font-weight: 700;
   font-size: calc(min(100vw, 490px) / 750 * 22);
   font-family: Arial, Helvetica, sans-serif;
@@ -195,7 +225,6 @@ export default {
 /* Game Section */
 .game-section {
   width: 100%;
-  grid-column: span 4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -204,12 +233,12 @@ export default {
 
 .game-box {
   width: 100%;
-  margin-left: calc(min(100vw, 490px)* .032);
+  margin-left: calc(min(100vw, 490px) * 0.032);
 }
 
 .game-box-title {
   color: white;
-  font-size: calc(min(100vw, 490px)*.032);
+  font-size: calc(min(100vw, 490px) * 0.032);
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -224,10 +253,10 @@ export default {
 }
 
 .game {
-  width: calc(min(100vw, 490px) / 750* 218);
-  height: calc(min(100vw, 490px) / 750* 290);
-  margin-right: calc(min(100vw, 490px)* .032);
-  margin-bottom: calc(min(100vw, 490px)* .032);
+  width: calc(min(100vw, 490px) / 750 * 218);
+  height: calc(min(100vw, 490px) / 750 * 290);
+  margin-right: calc(min(100vw, 490px) * 0.032);
+  margin-bottom: calc(min(100vw, 490px) * 0.032);
   background-color: #0d273f;
   border-radius: 0.5rem;
   position: relative;
@@ -242,7 +271,7 @@ export default {
 .game-title-box {
   width: 100%;
   height: 25%;
-  font-size: calc(min(100vw, 490px) / 750* 22);
+  font-size: calc(min(100vw, 490px) / 750 * 22);
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
