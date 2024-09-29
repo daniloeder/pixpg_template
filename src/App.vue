@@ -9,16 +9,16 @@
 
 <script>
 import Header from './components/Header.vue';
-import SideMenu from './components/SideMenu.vue';
+/*import SideMenu from './components/SideMenu.vue';*/
 import MainBody from './components/MainBody.vue';
-import BottomNav from './components/BottomNav.vue';
+/*import BottomNav from './components/BottomNav.vue';*/
 
 export default {
   components: {
     Header,
-    SideMenu,
+    /*SideMenu,*/
     MainBody,
-    BottomNav
+    /*BottomNav*/
   }
 };
 </script>
@@ -46,7 +46,6 @@ html, body {
 /* Main container styles */
 .app-container {
   width: 490px;
-  height: 100vh;  /* Full viewport height */
   margin: 0 auto;  /* Center horizontally */
   display: flex;
   flex-direction: column;
