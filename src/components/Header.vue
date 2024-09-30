@@ -1,7 +1,13 @@
 <template>
   <header class="bg-custom-blue p-4 flex justify-between w-full">
     <!-- Menu Icon (left-aligned) -->
-    <img src="./../assets/images/header_menu_icon.webp" alt="Menu Icon" class="w-6 h-6 md:w-8 md:h-8">
+    <img
+      src="./../assets/images/header_menu_icon.webp"
+      alt="Menu Icon"
+      class="w-6 h-6 md:w-8 md:h-8 menu-icon"
+      @click="toggleMenu"
+      :class="{ rotated: isMenuOpen }"
+    />
 
     <!-- Left Logo -->
     <div class="flex flex-1">
@@ -10,12 +16,8 @@
 
     <!-- Buttons (right-aligned) -->
     <nav class="flex space-x-2">
-      <button class="login-btn">
-        Login
-      </button>
-      <button class="register-btn">
-        Registro
-      </button>
+      <button class="login-btn">Login</button>
+      <button class="register-btn">Registro</button>
     </nav>
   </header>
 </template>
@@ -23,6 +25,17 @@
 <script>
 export default {
   name: 'AppHeader',
+  data() {
+    return {
+      isMenuOpen: false, // Track the state of the side menu
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+      this.$emit('toggleSideMenu');
+    },
+  },
 };
 </script>
 
@@ -36,7 +49,7 @@ export default {
   justify-content: left;
 }
 
-/* Responsive image and logo adjustments */
+/* Menu Icon */
 .w-6 {
   width: 2rem;
   height: auto;
@@ -48,6 +61,16 @@ export default {
   height: 2.3rem;
 }
 
+/* Rotation animation for the menu icon */
+.menu-icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.rotated {
+  transform: rotate(-180deg);
+}
+
+/* No space between header and body */
 .w-24 {
   width: 10rem;
   height: auto;
@@ -65,9 +88,10 @@ export default {
 }
 
 /* Button Styles */
-.login-btn, .register-btn {
+.login-btn,
+.register-btn {
   border: 1px solid #FFFCD2;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   color: #fffcd2;
   background-color: inherit;
   font-weight: 400;
@@ -88,6 +112,4 @@ export default {
 .register-btn {
   margin-left: 0.5rem;
 }
-
-
 </style>

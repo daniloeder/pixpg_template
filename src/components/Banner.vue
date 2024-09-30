@@ -52,9 +52,9 @@
     width: 480px; /* Fixed width for the container */
     overflow: hidden; /* Hide the overflowing images */
     position: relative;
-    border-radius: 1rem;
+    border-radius: .6rem;
     margin-left: 5px; /* Add left margin */
-    margin-top: 12px; /* Add top margin */
+    margin-top: 8px; /* Add top margin */
   }
   
   .carousel-track {

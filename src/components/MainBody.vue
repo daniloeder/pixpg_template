@@ -155,7 +155,7 @@ html, body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0 5%;
   height: calc(min(100vw, 490px) * 0.08);
-  margin-top: 0.7rem;
+  margin-top: 0.9rem;
   box-sizing: border-box;
 }
 
@@ -228,7 +228,7 @@ html, body {
   background-color: #014789;
   display: flex;
   justify-content: space-evenly;
-  padding: 1rem;
+  padding: 1rem 3rem;
 }
 
 .menu-item {
@@ -249,6 +249,7 @@ html, body {
   font-weight: 700;
   font-size: calc(min(100vw, 490px) / 750 * 22);
   font-family: Arial, Helvetica, sans-serif;
+  margin-top: auto;
 }
 
 

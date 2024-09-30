@@ -35,7 +35,7 @@
   width: 100%;
   height: calc(min(100vw,490px) / 750 * 122);
   max-width: 490px;
-  z-index: 1000;
+  z-index: 1;
 }
 
 .nav-item {
