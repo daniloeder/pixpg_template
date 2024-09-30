@@ -287,6 +287,7 @@ html, body {
   align-items: center;
   justify-content: center;
   width: calc(min(100vw, 490px) * 0.16);
+  cursor: pointer;
 }
 
 .menu-item-icon {

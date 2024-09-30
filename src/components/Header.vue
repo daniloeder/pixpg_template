@@ -64,6 +64,7 @@ export default {
 /* Rotation animation for the menu icon */
 .menu-icon {
   transition: transform 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .rotated {

@@ -55,6 +55,7 @@
     border-radius: .6rem;
     margin-left: 5px; /* Add left margin */
     margin-top: 8px; /* Add top margin */
+    cursor: pointer;
   }
   
   .carousel-track {

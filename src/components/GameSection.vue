@@ -147,6 +147,7 @@
     background-color: #0d273f;
     border-radius: 0.5rem;
     position: relative;
+    cursor: pointer;
   }
   
   .game-img {
