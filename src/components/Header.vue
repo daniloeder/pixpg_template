@@ -67,7 +67,7 @@ export default {
 }
 
 .rotated {
-  transform: rotate(-180deg);
+  transform: rotate(-180deg); /* Rotate an additional 180 degrees on click */
 }
 
 /* No space between header and body */
