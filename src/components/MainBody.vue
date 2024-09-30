@@ -1,8 +1,12 @@
 <template>
   <div class="container">
-    <div class="main-body">
+    <div 
+      class="main-body" 
+      ref="mainBody" 
+      @scroll="handleScroll"
+    >
       <!-- Top Banner -->
-      <Banner />
+      <Banner ref="banner"/>
 
       <!-- Notice Section with Sound Icon -->
       <div class="notice-section">
@@ -34,7 +38,12 @@
       </div>
 
       <!-- Menu Section -->
-      <div class="menu-section">
+      <div 
+        class="menu-section" 
+        :class="{ 'fixed': isFixed }" 
+        :style="{ width: isFixed ? fixedWidth + 'px' : 'auto', top: isFixed ? '64px' : 'auto' }" 
+        ref="menuSection"
+      >
         <div class="menu-item">
           <img src="./../assets/images/download.png" alt="Popular" class="menu-item-icon" />
           <div class="menu-item-text">Popular</div>
@@ -78,27 +87,61 @@
 
       <!-- Game Section -->
       <GameSection />
-    </div>
 
-    <footer class="footer">
-      <!-- Footer content here -->
-      Footer Content
-    </footer>
+      <div class="bottom"></div>
+    </div>
   </div>
 </template>
 
 <script>
-
 import GameSection from './GameSection.vue';
-import Banner from './Banner.vue'
+import Banner from './Banner.vue';
+
 export default {
   name: 'MainBody',
   components: {
     GameSection,
     Banner,
   },
-};
+  data() {
+    return {
+      isFixed: false, 
+      menuTop: 0,
+      bannerHeight: 0,
+      fixedWidth: 0,
+    };
+  },
+  methods: {
+  handleScroll() {
+    const menuSection = this.$refs.menuSection;
+    const mainBody = this.$refs.mainBody;
+    const banner = this.$refs.banner;
 
+    if (menuSection && mainBody && banner) {
+      const scrollTop = mainBody.scrollTop;
+      
+      // Fix the menu section just after the banner
+      if (scrollTop >= 360) {
+        this.isFixed = true;
+        this.fixedWidth = menuSection.offsetWidth;
+        this.bannerHeight = 360;
+      } else {
+        this.isFixed = false;
+      }
+    }
+  },
+},
+
+  mounted() {
+    const menuSection = this.$refs.menuSection;
+    const banner = this.$refs.banner;
+    
+    if (menuSection) {
+      this.menuTop = menuSection.offsetTop; // Set initial top position of the menu section
+      this.bannerHeight = banner.$el.offsetHeight; // Store the height of the banner initially
+    }
+  }
+};
 </script>
 
 <style scoped>
@@ -229,6 +272,13 @@ html, body {
   display: flex;
   justify-content: space-evenly;
   padding: 1rem 3rem;
+  transition: top 0.3s ease;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
 }
 
 .menu-item {
@@ -323,5 +373,9 @@ html, body {
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 0.6rem;
   font-weight: 600;
+}
+
+.bottom {
+  height: 100px;
 }
 </style>
